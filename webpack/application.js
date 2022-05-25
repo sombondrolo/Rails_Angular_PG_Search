@@ -1,3 +1,3 @@
+require("application.css");
+require("bootstrap/dist/css/bootstrap.css");
 console.log("Hello world!");
-require ("application.css");
-console.log("Hello World");
