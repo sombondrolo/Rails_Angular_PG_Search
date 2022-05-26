@@ -60,6 +60,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.8.1)
+    faker (2.12.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.5)
     foreman (0.87.2)
     globalid (0.4.2)
@@ -169,6 +171,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  faker
   foreman
   jbuilder (~> 2.5)
   jquery-rails
