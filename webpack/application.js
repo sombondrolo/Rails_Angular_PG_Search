@@ -139,10 +139,14 @@ var CustomerSearchComponent = ng.core.Component({
   </section> \
   '
 }).Class({
-  constructor: function() {
-    this.customers = null
-    this.keywords = ""
-  },
+  constructor: [
+    ng.http.Http,
+    function(http) {
+      this.customers = null
+      this.http = http
+      this.keywords = ""
+    }
+  ],
   search: function() {
     var self = this;
     self.http.get("/customers.json?keywords=" + self.keywords)
