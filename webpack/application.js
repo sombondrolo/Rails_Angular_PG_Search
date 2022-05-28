@@ -100,23 +100,24 @@ var CustomerSearchComponent = ng.core.Component({
   selector: "shine-customer-search",
   template: '\
   <header> \
-  <h1 class="h2">Customer Search</h1> \
+    <h1 class="h2">Customer Search</h1> \
   </header> \
   <section class="search-form"> \
-  <form> \
-  <div class="input-group input-group-lg"> \
-  <label for="keywords" class="sr-only">Keywords></label> \
-  <input type="text" id="keywords" name="keywords" \
-    placeholder="First Name, Last Name, or Email Address"\
-    class="form-control input-lg"\
-    bindon-ngModel="keywords">\
-  <span class="input-group-btn"> \
-  <input type="submit" value="Find Customers"\
-    class="btn btn-primary btn-lg"\
-    on-click="search()">\
-  </span> \
-  </div> \
-  </form> \
+    <form> \
+      <div class="input-group input-group-lg"> \
+        <label for="keywords" class="sr-only">Keywords></label> \
+        <input type="text" id="keywords" name="keywords" \
+          placeholder="First Name, Last Name, or Email Address"\
+          class="form-control input-lg"\
+          bindon-ngModel="keywords"\
+          on-ngModelChange="search($event)"> \
+        <span class="input-group-btn"> \
+          <input type="submit" value="Find Customers"\
+            class="btn btn-primary btn-lg"\
+            on-click="search()">\
+        </span> \
+      </div> \
+    </form> \
   </section> \
   <section class="search-results"> \
     <header> \
@@ -148,7 +149,11 @@ var CustomerSearchComponent = ng.core.Component({
     }
   ],
   search: function() {
-    var self = this;
+    var self = this
+    self.keywords = $event
+    if (self.keywords.length < 3) {
+      return
+    }
     self.http.get("/customers.json?keywords=" + self.keywords)
     .subscribe(
       function(response) {
