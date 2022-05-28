@@ -144,11 +144,16 @@ var CustomerSearchComponent = ng.core.Component({
     this.keywords = ""
   },
   search: function() {
-    if (this.keywords == "pat") {
-      this.customers = RESULTS
-    } else {
-      this.customers = []
-    }
+    var self = this;
+    self.http.get("/customers.json?keywords=" + self.keywords)
+    .subscribe(
+      function(response) {
+        self.customers = response.json().customers;
+      },
+      function(response) {
+        alert(response);
+      }
+    );
   }
 });
 
