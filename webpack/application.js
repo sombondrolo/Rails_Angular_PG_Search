@@ -139,19 +139,6 @@ var CustomerSearchComponent = ng.core.Component({
   '
 }).Class({
   constructor: function() {
-    this.keywords = null;
-  },
-  search: function() {
-    alert("Searched for: " + this.keywords);
-  }
-});
-
-var CustomerSearchAppModule = ng.core.NgModule({
-  imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ],
-  declarations: [ CustomerSearchComponent ],
-  bootstrap: [ CustomerSearchComponent ]
-}).Class({
-  constructor: function() {
     this.customers = null
     this.keywords = ""
   },
@@ -162,6 +149,14 @@ var CustomerSearchAppModule = ng.core.NgModule({
       this.customers = []
     }
   }
+});
+
+var CustomerSearchAppModule = ng.core.NgModule({
+  imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ],
+  declarations: [ CustomerSearchComponent ],
+  bootstrap: [ CustomerSearchComponent ]
+}).Class({
+  constructor: function() {}
 });
 
 document.addEventListener('DOMContentLoaded', function() {
