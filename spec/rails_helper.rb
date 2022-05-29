@@ -65,8 +65,8 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.before(:suite) do
-    $pid = spawn("./node_modules/.bin/webpack-dev-server "
-      + "--config config/webpack.config.js --quiet")
+    # $pid = spawn("./node_modules/.bin/webpack-dev-server " + "--config config/webpack.config.js --quiet")
+    $pid = spawn("./node_modules/.bin/webpack-dev-server --config config/webpack.config.js --quiet")
     DatabaseCleaner.clean_with(:truncation)
   end
   config.after(:suite) do
